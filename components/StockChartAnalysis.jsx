@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react'
 import dynamic from 'next/dynamic'
+import BrokerTradeData from './BrokerTradeData'
 
 const CandlestickChart = dynamic(() => import('./CandlestickChart'), { ssr: false })
 const VolumeChart = dynamic(() => import('./VolumeChart'), { ssr: false })
@@ -57,6 +58,7 @@ export default function StockChartAnalysis({ chipData, stockHistory }) {
         <>
             <CandlestickChart chipData={chipData} displayedData={displayedData} sharedOptions={sharedOptions} />
             <VolumeChart displayedData={displayedData} sharedOptions={sharedOptions} />
+            <BrokerTradeData stockCode={chipData.股票代號} />
         </>
     )
 }
