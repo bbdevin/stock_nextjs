@@ -104,7 +104,7 @@ export default function StockAnalysis() {
                         <StockChartAnalysis chipData={chipData} stockHistory={stockHistory} />
                     )}
                     {!loading && chipData && stockHistory && (
-                        <BrokerTradeData stockId={stockInput} startDate={startDate} endDate={endDate} />
+                        <BrokerTradeData stockId={chipData.股票代號} startDate={startDate} endDate={endDate} />
                     )}
                     {!loading && !chipData && (
                         <p className="text-gray-500 text-center mt-8">請輸入股票代碼或名稱並點擊查詢以獲取資料。</p>
