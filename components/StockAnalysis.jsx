@@ -1,12 +1,13 @@
 'use client';
 
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Input } from "./ui/input"
 import { Button } from "./ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card"
 import BrokerChipAnalysis from './BrokerChipAnalysis'
 import StockChartAnalysis from './StockChartAnalysis'
+import BrokerTradeData from './BrokerTradeData'
 
 export default function StockAnalysis() {
     const [stockInput, setStockInput] = useState('')
@@ -101,6 +102,9 @@ export default function StockAnalysis() {
                     )}
                     {!loading && chipData && stockHistory && (
                         <StockChartAnalysis chipData={chipData} stockHistory={stockHistory} />
+                    )}
+                    {!loading && chipData && stockHistory && (
+                        <BrokerTradeData stockId={stockInput} startDate={startDate} endDate={endDate} />
                     )}
                     {!loading && !chipData && (
                         <p className="text-gray-500 text-center mt-8">請輸入股票代碼或名稱並點擊查詢以獲取資料。</p>
