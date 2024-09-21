@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import dynamic from 'next/dynamic';
+import { API_URL } from '../config';
 const Chart = dynamic(() => import('react-apexcharts'), { ssr: false });
 
 const BrokerTradeData = ({ stockId }) => {
@@ -30,7 +31,7 @@ const BrokerTradeData = ({ stockId }) => {
         setIsLoading(true);
 
         try {
-            const response = await axios.get(`http://localhost:5000/api/broker_data`, {
+            const response = await axios.get(`${API_URL}/broker_data`, {
                 params: {
                     stock_id: stockId,
                     broker: brokerInput,

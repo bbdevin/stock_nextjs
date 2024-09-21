@@ -8,6 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "./ui/card"
 import BrokerChipAnalysis from './BrokerChipAnalysis'
 import StockChartAnalysis from './StockChartAnalysis'
 import BrokerTradeData from './BrokerTradeData'
+import { API_URL } from '../config';
 
 export default function StockAnalysis() {
     const [stockInput, setStockInput] = useState('')
@@ -26,7 +27,7 @@ export default function StockAnalysis() {
         setLoading(true)
         setError(null)
         try {
-            let url = `http://localhost:5000/api/chip_data/${encodeURIComponent(stockInput)}`
+            let url = `${API_URL}/chip_data/${encodeURIComponent(stockInput)}`
             let params = {}
             if (startDate && endDate) {
                 params.start_date = startDate
@@ -44,7 +45,7 @@ export default function StockAnalysis() {
 
     const fetchStockHistory = async (stockCode) => {
         try {
-            const response = await axios.get(`http://localhost:5000/api/stock_history/${stockCode}`);
+            const response = await axios.get(`${API_URL}/stock_history/${stockCode}`);
             setStockHistory(response.data);
         } catch (error) {
             console.error('Error fetching stock history:', error);
