@@ -1,1 +1,5 @@
-https://stock-techtrever.netlify.app/* https://stock.techtrever.site/:splat 301!
+[[redirects]]
+    from = "/*"
+    to = "https://stock.techtrever.site"
+    status = 301
+    force = true
